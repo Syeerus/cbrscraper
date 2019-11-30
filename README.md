@@ -1,10 +1,11 @@
 # Cape Breton Radio Scraper #
 
 This project is used for scraping music radio stations that are broadcasting around
-Cape Breton, Nova Scotia.
+Cape Breton, Nova Scotia. The main script is meant to be run as a Cron job and will
+insure not to insert duplicate playlist entries on multiple runs.
 
 ## Requirements ##
-+ Python 3.6+
++ Python 3.5.3+
 
 ## Usage ##
 *setup.py*
