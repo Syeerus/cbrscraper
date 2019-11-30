@@ -12,8 +12,8 @@ import json
 import time
 from typing import List
 from .scraper import BaseScraper
-from cbrscraper.helpers import MONTH_DAYS, is_leap_year
-from cbrscraper.exceptions import TimeStringFormattingError
+from helpers import MONTH_DAYS, is_leap_year
+from exceptions import TimeStringFormattingError
 
 
 class LeanStreamScraper(BaseScraper):
@@ -26,10 +26,9 @@ class LeanStreamScraper(BaseScraper):
         playlist = []
         for i in range(0, len(data)):
             playlist += [{
-                'station_id': self.station_id,
-                'artist': data[i].artist,
-                'title': data[i].title,
-                'time': self.convert_timestamp(data[i].time)
+                'artist': data[i]['artist'].upper(),
+                'title': data[i]['title'].upper(),
+                'time': self.convert_timestamp(data[i]['time'])
             }]
 
         return playlist
