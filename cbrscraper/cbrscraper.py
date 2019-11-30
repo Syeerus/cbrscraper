@@ -40,7 +40,7 @@ def get_args():
     parser.add_argument('-c', '--connection-attempts', help='How many times to try downloading a playlist.', default=DEFAULT_MAX_CONNECTION_ATTEMPTS)
     parser.add_argument('-t', '--timeout', help='Seconds to wait for a connection to succeed.', default=DEFAULT_CONNECTION_TIMEOUT)
     parser.add_argument('-b', '--backup', nargs='?', help='Backs up the file if it exists, with optional path.', default=False, const=True)
-    parser.add_argument('-l', '--log-level', help='Set logging level.', default='ERROR', choices=('CRITICAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG'))
+    parser.add_argument('-l', '--log-level', help='Set logging level.', default='ERROR', choices=('CRITICAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG',))
     parser.add_argument('-v', '--version', help='Displays version info.', action='version', version='v{0}'.format(VERSION))
     return parser.parse_args()
 
@@ -56,12 +56,9 @@ def backup_old_file(filename: str, backup):
         if backup:
             copy_filename = time.strftime('%Y-%m-%d_%I-%M%p_' + os.path.basename(filename), time.gmtime())
             if type(backup) == str:
-                if os.path.isdir(backup):
-                    copy_filename = os.path.join(backup, filename)
-                else:
+                if not os.path.isdir(backup):
                     os.makedirs(backup)
-                    copy_filename = os.path.join(backup, filename)
-
+                copy_filename = os.path.join(backup, copy_filename)
             shutil.copy(filename, copy_filename)
     else:
         raise FileNotFoundError("Filename '{0}' not found".format(filename))
