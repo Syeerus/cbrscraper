@@ -28,7 +28,7 @@ usage: cbrscraper.py [-h] [-c CONNECTION_ATTEMPTS] [-t TIMEOUT] [-b [BACKUP]]
                      [-l {CRITICAL,ERROR,WARNING,INFO,DEBUG}] [-v]
                      filename
 
-Scrapes a play list defined in an SQLite3 database.
+Scrapes playlists defined in an SQLite3 database.
 
 positional arguments:
   filename              Filename of the database to use.

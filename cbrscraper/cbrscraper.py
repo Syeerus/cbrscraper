@@ -35,7 +35,7 @@ def get_args():
     Parses arguments from the command line
     :return: Parsed arguments
     """
-    parser = argparse.ArgumentParser(description='Scrapes a play list defined in an SQLite3 database.')
+    parser = argparse.ArgumentParser(description='Scrapes playlists defined in an SQLite3 database.')
     parser.add_argument('filename', help='Filename of the database to use.')
     parser.add_argument('-c', '--connection-attempts', help='How many times to try downloading a playlist.', default=DEFAULT_MAX_CONNECTION_ATTEMPTS)
     parser.add_argument('-t', '--timeout', help='Seconds to wait for a connection to succeed.', default=DEFAULT_CONNECTION_TIMEOUT)
