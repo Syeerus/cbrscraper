@@ -26,8 +26,8 @@ class LeanStreamScraper(BaseScraper):
         playlist = []
         for i in range(0, len(data)):
             playlist += [{
-                'artist': data[i]['artist'].upper(),
-                'title': data[i]['title'].upper(),
+                'artist': data[i]['artist'],
+                'title': data[i]['title'],
                 'time': self.convert_timestamp(data[i]['time'])
             }]
 

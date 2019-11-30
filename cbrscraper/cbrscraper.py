@@ -102,6 +102,17 @@ def populate_ids(ids: dict, artists: list, songs: list):
         ids['artists_songs'][key][songs[i]['title']] = songs[i]['id']
 
 
+def prepare_data(song: dict) -> dict:
+    """
+    Prepares song dataa for database insertion to cut down on duplicates
+    :param song: Song data
+    :return: The song data
+    """
+    song['artist'] = song['artist'].upper().strip()
+    song['title'] = song['title'].upper().strip()
+    return song
+
+
 def scrape_station(cursor: sqlite3.Cursor, station: sqlite3.Row, ids: dict, headers: dict, connection_attempts: int, timeout: int):
     """
     Scrapes a single station
@@ -135,7 +146,7 @@ def scrape_station(cursor: sqlite3.Cursor, station: sqlite3.Row, ids: dict, head
             logger.error("An error occured for station '{0}' - {1}".format(station['name'], e))
 
     for i in range(0, len(data)):
-        song = data[i]
+        song = prepare_data(data[i])
         artist_id = None
         song_id = None
         if song['artist'] in ids['artists']:
@@ -205,7 +216,6 @@ def main():
         print('Error: {0}'.format(e))
         logger = logging.getLogger('cbrscraper')
         logger.error(e)
-        raise e
 
 if __name__ == '__main__':
     main()
