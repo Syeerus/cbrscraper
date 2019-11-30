@@ -131,7 +131,9 @@ def scrape_station(cursor: sqlite3.Cursor, station: sqlite3.Row, ids: dict, head
 
     data = []
     logger = logging.getLogger('cbrscraper')
+    logger.info("Scraping station '{0}'".format(station['name']))
     for i in range(0, connection_attempts):
+        logger.info('Connection attempt #{0}'.format(i + 1))
         try:
             data = scraper.scrape()
             break
@@ -163,6 +165,7 @@ def scrape_station(cursor: sqlite3.Cursor, station: sqlite3.Row, ids: dict, head
 
         if last_row and last_row['song_id'] == song_id and last_row['timestamp'] == song['time']:
             # We're at where we left off last time
+            logger.info('Found last row from previous run. {0} - {1}'.format(song['artist'], song['title']))
             break
 
         cursor.execute('INSERT INTO playlists(station_id, song_id, timestamp) VALUES(?, ?, ?)',
