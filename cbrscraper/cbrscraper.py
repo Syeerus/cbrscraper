@@ -125,7 +125,7 @@ def scrape_station(cursor: sqlite3.Cursor, station: sqlite3.Row, ids: dict, head
     last_row = query.fetchone()
     scraper = None
     if station['scraper'] == 'leanstream':
-        scraper = scrapers.leanstream.LeanStreamScraper(station['id'], station['url'], timeout, headers, float(station['utc_offset']))
+        scraper = scrapers.leanstream.LeanStreamScraper(station['url'], timeout, headers, float(station['utc_offset']))
     else:
         raise UnknownScraperError("Scraper '{0}' is unknown.".format(station['scraper']))
 

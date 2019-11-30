@@ -14,16 +14,14 @@ from typing import List
 class BaseScraper(ABC):
     """Base class for all scrapers"""
 
-    def __init__(self, station_id: str, url: str, timeout: int, headers: dict = None, utc_offset: float = 0.0):
+    def __init__(self, url: str, timeout: int, headers: dict = None, utc_offset: float = 0.0):
         """
         Class initializer
-        :param station_id: Station ID corresponding to a database key
         :param url: Playlist URL
         :param timeout: Download timeout in seconds
         :param headers:  HTTP headers to send
         :param utc_offset: UTC offset
         """
-        self.station_id = station_id
         self.url = url
         self.timeout = timeout
         self.headers = headers
