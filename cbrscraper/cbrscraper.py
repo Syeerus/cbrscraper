@@ -70,7 +70,7 @@ def get_headers() -> dict:
     :return: Headers
     """
     try:
-        with open(HEADERS_FILE, 'r') as f:
+        with open(HEADERS_FILE, 'r', encoding='utf-8') as f:
             data = f.read()
         data = json.loads(data, encoding='utf-8')
         if type(data) != dict:
@@ -216,6 +216,7 @@ def main():
         print('Error: {0}'.format(e))
         logger = logging.getLogger('cbrscraper')
         logger.error(e)
+
 
 if __name__ == '__main__':
     main()

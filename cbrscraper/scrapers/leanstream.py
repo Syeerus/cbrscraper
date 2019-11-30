@@ -22,7 +22,7 @@ class LeanStreamScraper(BaseScraper):
     def scrape(self) -> List[dict]:
         req = urllib.request.Request(self.url, headers=self.headers)
         response = urllib.request.urlopen(req, timeout=self.timeout)
-        data = json.loads(response.read(), encoding='utf-8')
+        data = json.loads(response.read().decode('utf-8'), encoding='utf-8')
         playlist = []
         for i in range(0, len(data)):
             playlist += [{
