@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # File: setup.py
 # Author: Syeerus
 # License: MIT

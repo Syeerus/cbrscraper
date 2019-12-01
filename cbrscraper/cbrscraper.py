@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # File: cbrscraper.py
 # Author: Syeerus
 # License: MIT
