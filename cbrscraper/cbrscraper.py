@@ -18,7 +18,7 @@ from helpers import str_to_log_level
 from exceptions import UnknownScraperError
 
 
-VERSION = '0.1.0'
+VERSION = '1.0.0'
 
 HEADERS_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'headers.json')
 
